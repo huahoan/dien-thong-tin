@@ -1,0 +1,85 @@
+<html>
+<head>
+    <title>Tra cứu Nhân Viên</title>
+    <style>
+        h3 {color: red;text-align: center;}
+    </style>
+    <script language="Javascript">
+        function tinhluong() {
+            var tienluong = parseInt(document.frmluong.tienluong.value);
+            var giatri = 0;
+            var loai = document.frmluong.loai.value;
+            if(loai=="Loại A")
+                giatri = (tienluong*2);
+            else if(loai=="Loại B")
+                giatri = (tienluong*1.8);
+            else if(loai=="Loại C")
+                giatri = (tienluong*1.2);
+            else giatri = (tienluong*0.8);
+            document.getElementById("inluong").innerText=giatri;
+        }
+        window.onload = function() {
+            const manv = localStorage.getItem("manv") || "Không có dữ liệu";
+            const hoten = localStorage.getItem("hoten") || "Không có dữ liệu";
+            const email = localStorage.getItem("email") || "Không có dữ liệu";
+            const gioitinh = localStorage.getItem("gioitinh") || "Không có dữ liệu";
+            const bophan = JSON.parse(localStorage.getItem("bophan")) || ["Không có dữ liệu"];
+            document.getElementById("manv").textContent = manv;
+            document.getElementById("hoten").textContent = hoten;
+            document.getElementById("email").textContent = email;
+            document.getElementById("gioitinh").textContent = gioitinh;
+            document.getElementById("bophan").textContent = bophan.join(", ");
+            localStorage.removeItem("manv");
+            localStorage.removeItem("hoten");
+            localStorage.removeItem("email");
+            localStorage.removeItem("gioitinh");
+            localStorage.removeItem("bophan");
+        }
+    </script>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif;">   
+    <table border="1" cellspacing="0" cellspading="2">
+        <tr><td colspan="3"><img src="banner.jpg" alt=""><div></div></td></tr>
+        <tr>
+            <td>
+                <form name="frmluong"><table border="0">
+                    <tr><td><h3>Bảng Lương</h3></td></tr>
+                    <tr><td>Tiền lương:</td></tr>
+                    <tr><td><input type="number" name="tienluong"></td></tr>
+                    <tr><td>Xếp loại:</td></tr>
+                    <tr><td><select name="loai" id="">
+                            <option value="Loại A">Loại A</option>
+                            <option value="Loại B">Loại B</option>
+                            <option value="Loại C">Loại C</option>
+                            <option value="Loại D">Loại D</option>
+                    </select></td></tr>
+                    <tr><td align="center"><input type="button" name="tinh" value="Tính" onclick="return tinhluong();"></td></tr>
+                    <tr><td align="center">Tiền thưởng:</td></tr>
+                    <tr><td align="center"><span style="font-weight: bold;font-size: 30;" id="inluong"></span></td></tr>
+                    <tr><td height="50"></td></tr>
+                    <tr><td align="center"><img src="dichvutt.jpg"></td></tr>
+                </table>
+            </td></form>
+            <td width="490">
+                <table border="0" cellspacing="0" cellspading="2">
+                    <tr>
+                        <td rowspan="2" width="30"></td>
+                        <td align="center"><H2>THÔNG TIN NHÂN VIÊN</H2></td>
+                        <td rowspan="2" width="30"></td>
+                    </tr>
+                    <tr><td>
+                        <ul type="disc">
+                            <li>Mã NV: <span id="manv"></span></li>
+                            <li>Họ tên: <span id="hoten"></span></li>
+                            <li>Email: <span id="email"></span></li>
+                            <li>Giới tính: <span id="gioitinh"></span></li>
+                            <li>Bộ phận: <span id="bophan"></span></li>
+                        </ul>
+                    </td></tr>
+                </table>
+            </td>
+            <td align="center"><img src="luatthongke.jpg" height="350" width="full"></td>
+        </tr>
+    </table>
+</body>
+</html>

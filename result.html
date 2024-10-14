@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết Quả Form</title>
+    <script>
+        window.onload = function() {
+            // Lấy dữ liệu từ localStorage
+            const manv = localStorage.getItem("manv") || "Không có dữ liệu";
+            const hoten = localStorage.getItem("hoten") || "Không có dữ liệu";
+            const email = localStorage.getItem("email") || "Không có dữ liệu";
+            const gioitinh = localStorage.getItem("gioitinh") || "Không có dữ liệu";
+            const bophan = JSON.parse(localStorage.getItem("bophan")) || ["Không có dữ liệu"];
+
+            // Hiển thị dữ liệu
+            document.getElementById("manv").textContent = manv;
+            document.getElementById("hoten").textContent = hoten;
+            document.getElementById("email").textContent = email;
+            document.getElementById("gioitinh").textContent = gioitinh;
+            document.getElementById("bophan").textContent = bophan.join(", ");
+        }
+    </script>
+</head>
+<body>
+    <h1>Kết Quả Form</h1>
+    <p><strong>Mã nhân viên:</strong> <span id="manv"></span></p>
+    <p><strong>Họ tên:</strong> <span id="hoten"></span></p>
+    <p><strong>Email:</strong> <span id="email"></span></p>
+    <p><strong>Giới tính:</strong> <span id="gioitinh"></span></p>
+    <p><strong>Bộ phận:</strong> <span id="bophan"></span></p>
+</body>
+</html>
